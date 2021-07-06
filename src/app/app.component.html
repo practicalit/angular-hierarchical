@@ -10,7 +10,7 @@
     <button mat-icon-button matTreeNodeToggle
             [attr.aria-label]="'Toggle ' + node.name">
       <mat-icon class="mat-icon-rtl-mirror">
-        {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+        <span (click)="populate(node)">{{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}</span>
       </mat-icon>
     </button>
     {{node.name}}
@@ -27,3 +27,6 @@
     <button mat-button disabled>Disabled</button>
   </div>
 </section>
+
+<h1>New part</h1>
+<app-tree-component></app-tree-component>

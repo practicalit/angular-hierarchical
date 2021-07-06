@@ -1,0 +1,24 @@
+[
+    {
+        "name":"orange",
+        "id": 1,
+        "calorie": 250,
+        "vit": 1
+    },
+    {
+        "name":"kiwi",
+        "id": 2,
+        "vit": 1
+    },
+    {
+        "name":"banana",
+        "id": 3,
+        "calorie": 250,
+        "vit": 2
+    },
+    {
+        "name":"mango",
+        "id": 4,
+        "vit": 2
+    }
+]

@@ -6,11 +6,15 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatTreeModule} from '@angular/material/tree';
 import {MatIconModule} from '@angular/material/icon';
+import {MatSliderModule} from '@angular/material/slider';
 import {MatButtonModule} from '@angular/material/button';
+import { HttpClientModule } from '@angular/common/http';
+import { TreeComponentComponent } from './tree-component/tree-component.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TreeComponentComponent
   ],
   imports: [
     BrowserModule,
@@ -18,7 +22,9 @@ import {MatButtonModule} from '@angular/material/button';
     BrowserAnimationsModule,
     MatTreeModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    HttpClientModule,
+    MatSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

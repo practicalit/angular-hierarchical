@@ -1,0 +1,11 @@
+[
+    {
+        "name":"banana",
+        "id": 3,
+        "calorie": 250
+    },
+    {
+        "name":"mango",
+        "id": 4
+    }
+]

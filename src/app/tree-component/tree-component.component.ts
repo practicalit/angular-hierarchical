@@ -102,39 +102,35 @@ export class DynamicDataSource implements DataSource<DynamicFlatNode> {
       let nodes = null;
       switch (node.level) {
         case 0:
-          // this.fruitService.getVitamins()
-          //   .subscribe( data => {
-          //     console.log(data);
-          //     nodes = data.map(n => {
-          //     return new DynamicFlatNode(
-          //       { name: n.name, id: n.id },
-          //       node.level + 1,
-          //       true
-          //     )
-          //   })
-            const vits = this.fruitService.getVitamins();
-            nodes = vits.map(n => {
-                  return new DynamicFlatNode(
-                    { name: n.name, id: n.id },
-                    node.level + 1,
-                    true
-                  )
+          this.fruitService.getVitamins(node.item.id)
+            .subscribe(data => {
+              nodes = data.map(n => {
+                return new DynamicFlatNode(
+                  { name: n.name, id: n.id },
+                  node.level + 1,
+                  true
+                );
+              })
+              this.refreshTree(index, nodes);
+              node.isLoading = false;
             });
-            console.log(this.data);
-            if (nodes)
-              this.data.splice(index + 1, 0, ...nodes);
-          //});
+          if (nodes)
+            this.data.splice(index + 1, 0, ...nodes);
           break;
         case 1:
-          nodes = this.fruitService.getFruits(node.item.id)
-            .map(n => {
-              return new DynamicFlatNode(
-                { name: n.name, id: n.id },
-                node.level + 1,
-                true
-              )
+          this.fruitService.getFruits(node.item.id)
+            .subscribe(data => {
+              nodes = data.map(n => {
+                return new DynamicFlatNode(
+                  { name: n.name, id: n.id },
+                  node.level + 1,
+                  true
+                )
+              })
+              this.refreshTree(index, nodes);
+              node.isLoading = false;
             });
-            if (nodes)
+          if (nodes)
             this.data.splice(index + 1, 0, ...nodes);
           break;
       }
@@ -148,6 +144,11 @@ export class DynamicDataSource implements DataSource<DynamicFlatNode> {
     // notify the change
     this.dataChange.next(this.data);
     node.isLoading = false;
+  }
+
+  private refreshTree(index, nodes) {
+    this.data.splice(index + 1, 0, ...nodes);
+    this.dataChange.next(this.data);
   }
 }
 

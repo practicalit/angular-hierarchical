@@ -1,0 +1,11 @@
+[
+    {
+        "name":"strawberry",
+        "id": 5,
+        "calorie": 250
+    },
+    {
+        "name":"blueberry",
+        "id": 6
+    }
+]
